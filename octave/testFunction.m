@@ -10,7 +10,8 @@ function retimgArr = otherFunc(img, map, alpha, patchsize)
 	retimgArr = 0;
 	image(img);
 	%order matters, ij not working
-	axis("equal", "ij");
+	axis equal;
+	axis ij;
 	pt = getPatches(img, patchsize);
 	rebuild(pt, patchsize);
 	retimgArr = pt

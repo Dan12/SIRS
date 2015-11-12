@@ -8,6 +8,15 @@ pause;
 
 patchsize = 128;
 
+asize = 10;
+a = rand(asize,asize,3);
+a(:,:,1) = reshape([1:asize*asize]./(asize*asize), asize,asize);
+a(:,:,2) = reshape([1:asize*asize]./(asize*asize), asize,asize)';
+a(:,:,3) = fliplr(reshape([1:asize*asize]./(asize*asize), asize,asize));
+imagesc(a);
+
+pause;
+
 [i, m, a, r] = testFunction("testimg.jpg", patchsize);
 
 fprintf("Convolutions, press enter to continue\n");
