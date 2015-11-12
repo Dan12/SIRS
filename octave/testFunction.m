@@ -1,9 +1,9 @@
-function [img, map, alpha, imgrgb] = testFunction(imgsrc)
+function [img, map, alpha, imgrgb] = testFunction(imgsrc, patchsize)
 	[img, map, alpha] = imread(imgsrc);
-	imgrgb = otherFunc(img, map, alpha);
+	imgrgb = otherFunc(img, map, alpha, patchsize);
 endfunction
 
-function retimgArr = otherFunc(img, map, alpha)
+function retimgArr = otherFunc(img, map, alpha, patchsize)
 	fprintf("%f \n %f \n %f \n", size(img), size(map), size(alpha));
 	%rgb colors
 	%fprintf("%f \n", img(1:10, end-10:end, 1:3));
@@ -11,27 +11,25 @@ function retimgArr = otherFunc(img, map, alpha)
 	image(img);
 	%order matters, ij not working
 	axis("equal", "ij");
-	pt = getPatches(img);
-	rebuild(pt);
+	pt = getPatches(img, patchsize);
+	rebuild(pt, patchsize);
+	retimgArr = pt
 endfunction
 
-function patches = getPatches(img)
-	patchsize = 32;
-	patches = zeros(patchsize*patchsize*3,1);
+function patches = getPatches(img, patchsize)
+	patches = zeros(patchsize*patchsize*3,9);
 	actr = (size(img,1)-patchsize);
 	actc = (size(img,2)-patchsize);
 	rand = randperm(actr*actc);
 
-	for i = 1:10
+	for i = 1:9
 		r = floor(rand(i)/actr);
 		c = mod(rand(i), actc);
-		tempPatch = img(r:r+patchsize-1,c:c+patchsize-1,:)(:);
-		patches = [tempPatch patches];
+		patches(:, i) = img(r:r+patchsize-1,c:c+patchsize-1,:)(:);
 	end
 endfunction
 
-function rebuild(patches)
-	patchsize = 32;
+function rebuild(patches, patchsize)
 	img = zeros(3*patchsize,3*patchsize,3);
 	%fprintf("%f\n", patches);
 	fprintf("press enter to continue");
