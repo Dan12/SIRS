@@ -1,0 +1,148 @@
+---------1---------
+3000 8*8 rgb patches from cifar-10 batch 1
+1 patch from random position from first 3000 images
+ZCA whitening applied to patches
+225 hidden units
+random initial weights over small interval
+trained in batch with lbfgs
+time: 263 seconds
+sparsityParam = 0.035
+lambda = 3e-3
+beta = 5     
+zca-epsilon = 0.1
+iterations = 600
+
+---------2---------
+3000 8*8 rgb patches from cifar-10 batch 1
+1 patch from random position form first 3000 images
+ZCA whitening applied to patches
+225 hidden units
+random initial weights over small interval
+trained online with lbfgs
+time: 187 seconds
+sparsityParam = 0.035
+lambda = 3e-3
+beta = 5     
+zca-epsilon = 0.1
+iterations = 10
+
+---------3---------
+3000 8*8 rgb patches from cifar-10 batch 1
+16 patches from all positions from first 3000 images
+ZCA whitening applied to patches
+225 hidden units
+random initial weights over small interval
+trained online with gradient descent
+time: 189 seconds
+sparsityParam = 0.035
+lambda = 3e-3
+beta = 5     
+zca-epsilon = 0.1
+alpha = 0.1
+iterations = 10
+
+---------4---------
+3000 8*8 rgb patches from cifar-10 batch 1
+16 patches from all positions from first 3000 images
+ZCA whitening applied to patches
+32 hidden units
+random initial weights over small interval
+trained online with gradient descent
+time: 125 seconds
+sparsityParam = 0.035
+lambda = 3e-3
+beta = 5     
+zca-epsilon = 0.1
+alpha = 0.03
+iterations = 10
+
+---------5---------
+3000 8*8 rgb patches from cifar-10 batch 1
+16 patches from all positions from first 3000 images
+ZCA whitening applied to patches
+36 hidden units
+random initial weights over small interval
+trained online with lbfgs
+time: 53 seconds
+sparsityParam = 0.035
+lambda = 3e-3
+beta = 5     
+zca-epsilon = 0.1
+iterations = 10
+
+---------6---------
+3000 8*8 rgb patches from cifar-10 batch 1
+16 patches from all positions from first 3000 images
+ZCA whitening applied to patches
+400 hidden units
+random initial weights over small interval
+trained online with gradient descent
+time: 263 seconds
+sparsityParam = 0.035
+lambda = 3e-3
+beta = 5     
+alpha = 0.01
+zca-epsilon = 0.1
+iterations = 10
+
+---------7---------
+3000 8*8 rgb patches from cifar-10 batch 1
+16 patches from all positions from first 3000 images
+ZCA whitening applied to patches
+400 hidden units
+random initial weights over small interval
+trained online with lbfgs
+time: 220 seconds
+sparsityParam = 0.035
+lambda = 3e-3
+beta = 5     
+zca-epsilon = 0.1
+iterations = 10
+batchSize = 10
+
+---------8---------
+3000 8*8 rgb patches from cifar-10 batch 1
+16 patches from all positions from first 3000 images
+ZCA whitening applied to patches
+196 hidden units
+random initial weights over small interval
+trained online with lbfgs
+time: 21 seconds
+sparsityParam = 0.035
+lambda = 3e-3
+beta = 5     
+zca-epsilon = 0.1
+iterations = 10
+batchSize = 15
+
+---------9---------
+3000 8*8 rgb patches from cifar-10 batch 1
+16 patches from all positions from first 3000 images
+ZCA whitening applied to patches
+225 hidden units
+random initial weights over small interval
+trained online with lbfgs
+time: 23 seconds
+sparsityParam = 0.035
+lambda = 3e-3
+beta = 5     
+zca-epsilon = 0.1
+iterations = 6
+batchSize = 20
+
+---------10---------
+3000 8*8 rgb patches from cifar-10 batch 1
+16 patches from all positions from first 3000 images
+ZCA whitening applied to patches
+400 hidden units
+random initial weights over small interval
+trained online with lbfgs
+time:  seconds
+sparsityParam = 0.035
+lambda = 3e-3
+beta = 5     
+zca-epsilon = 0.1
+iterations = 6
+batchSize = 5
+
+---------11---------
