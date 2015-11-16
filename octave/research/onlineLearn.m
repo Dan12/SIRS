@@ -3,9 +3,9 @@ function [optTheta, cost] = onlineLearn(visibleSize, hiddenSize, ...
 									   beta, data, numPatches, patchDim, ...
 									   theta)
 
-alpha = 0.01;
+alpha = .1;
 
-interns = 6;
+interns = 20;
 
 options = struct;
 options.Method = 'lbfgs'; 
@@ -19,9 +19,10 @@ rows = sqrt(colLen);
 
 epsilon = 0.1;
 
-batchSize = 5;
+batchSize = 200;
 
 for i = 1:numPatches/batchSize
+	printf("starting\n");
 
 	patches = zeros(rowLen,colLen*batchSize);
 	for k = 1:batchSize
@@ -33,9 +34,13 @@ for i = 1:numPatches/batchSize
 		end
 	end
 
+	printf("patches1\n");
+
 	patches = patches./(max(max(patches)));
 
-	[patches, ZCAWhite] = ZCAWhiten(patches, colLen, epsilon);
+	[patches, ZCAWhite] = ZCAWhiten(patches, colLen*batchSize, epsilon);
+
+	printf("patches2\n");
 
 	[optTheta, cost] = minFunc( @(p) SpLinAeCostGrad(p, visibleSize, hiddenSize, lambda, sparsityParam, beta, patches), theta, options);
 

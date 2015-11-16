@@ -4,6 +4,6 @@ function patches = selectPatches(data, patchDim, numPatches)
 		rc = ceil(rand()*(32-patchDim)*(32-patchDim));
 		r = ceil(rc/(32-patchDim));
 		c = mod(rc,(32-patchDim))+1;
-		patches(:,i) = reshape(data(i,:,:),32,32,3)(r:r+7,c:c+7,:)(:);
+		patches(:,i) = reshape(data(i,:,:),32,32,3)(r:r+patchDim-1,c:c+patchDim-1,:)(:);
 	end
 endfunction

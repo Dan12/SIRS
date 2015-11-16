@@ -34,8 +34,9 @@ epsilon = 0.1;	       % epsilon for ZCA whitening
 %testGradients();
 
 load cifar-10-batches-mat/data_batch_1.mat
-figure(1);
-dispcf(3,data',32);
+
+%figure(1);
+%dispcf(3,data',32);
 
 printf("3rd image\n");
 pause;
@@ -46,8 +47,8 @@ patches = patches./(max(max(patches)));
 
 [patches, ZCAWhite] = ZCAWhiten(patches, numPatches, epsilon);
 
-figure(2);
-dispcf(3,patches,patchDim);
+%figure(2);
+%dispcf(3,patches,patchDim);
 
 printf("patches\n");
 pause;
