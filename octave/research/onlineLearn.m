@@ -19,7 +19,7 @@ rows = sqrt(colLen);
 
 epsilon = 0.1;
 
-batchSize = 200;
+batchSize = 20;
 
 for i = 1:numPatches/batchSize
 	printf("starting\n");
@@ -42,9 +42,9 @@ for i = 1:numPatches/batchSize
 
 	printf("patches2\n");
 
-	[optTheta, cost] = minFunc( @(p) SpLinAeCostGrad(p, visibleSize, hiddenSize, lambda, sparsityParam, beta, patches), theta, options);
+	%[optTheta, cost] = minFunc( @(p) SpLinAeCostGrad(p, visibleSize, hiddenSize, lambda, sparsityParam, beta, patches), theta, options);
 
-	%[optTheta, cost] = gradientDescent(theta, alpha, interns, visibleSize, hiddenSize, lambda, sparsityParam, beta, patches);
+	[optTheta, cost] = gradientDescent(theta, alpha, interns, visibleSize, hiddenSize, lambda, sparsityParam, beta, patches);
 
 	theta = optTheta;
 	%disp(cost);

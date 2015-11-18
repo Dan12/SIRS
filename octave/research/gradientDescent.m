@@ -19,6 +19,8 @@ function [theta, J_history] = gradientDescent(theta, alpha, num_iters, ...
         
         % Save the cost J in every iteration    
         J_history(iter) = cost;
+	
+	printf("%d %f\n", iter, cost);
 
     end
 
