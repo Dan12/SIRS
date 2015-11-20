@@ -19,7 +19,7 @@ rows = sqrt(colLen);
 
 epsilon = 0.1;
 
-batchSize = 20;
+batchSize = 50;
 
 for i = 1:numPatches/batchSize
 	printf("starting\n");
