@@ -65,10 +65,10 @@ addpath minFunc/
 t1 = getMillis();
 
 %batch
-%[optTheta, cost] = batchLearn(visibleSize, hiddenSize, lambda, sparsityParam, beta, patches, theta);
+[optTheta, cost] = batchLearn(visibleSize, hiddenSize, lambda, sparsityParam, beta, patches, theta);
 
 %online
-[optTheta, cost] = onlineLearn(visibleSize, hiddenSize, lambda, sparsityParam, beta, data, numPatches, patchDim, theta);
+%[optTheta, cost] = onlineLearn(visibleSize, hiddenSize, lambda, sparsityParam, beta, data, numPatches, patchDim, theta, ZCAWhite);
 
 printf("Time: %f seconds\n", (getMillis()-t1));
 

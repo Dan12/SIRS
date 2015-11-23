@@ -227,7 +227,7 @@ batchSize = 20
 
 ---------16---------
 6000 8*8 rgb patches from cifar-10 batch 1
-16 patches from all positions from first 3000 images
+16 patches from all positions from first 6000 images
 ZCA whitening applied to patches
 400 hidden units
 random initial weights over small interval
@@ -242,3 +242,16 @@ iterations = 20
 batchSize = 20
 
 ---------17---------
+9000 8*8 rgb patches from cifar-10 batch 1
+1 patch from random position from first 9000 images
+No ZCA Whitening
+400 hidden units
+random initial weights over small interval
+trained in batch with lbfgs
+time: 998 seconds (car ride)
+sparsityParam = 0.035
+lambda = 3e-3
+beta = 5     
+iterations = 600
+
+---------18---------

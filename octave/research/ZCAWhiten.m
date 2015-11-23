@@ -7,5 +7,5 @@ function [patches, ZCAWhite] = ZCAWhiten(patches, numPatches, epsilon)
 	sigma = patches * patches' / numPatches;
 	[u, s, v] = svd(sigma);
 	ZCAWhite = u * diag(1 ./ sqrt(diag(s) + epsilon)) * u';
-	patches = ZCAWhite * patches;
+	%patches = ZCAWhite * patches;
 endfunction

@@ -1,7 +1,7 @@
 function [optTheta, cost] = onlineLearn(visibleSize, hiddenSize, ...
 									   lambda, sparsityParam, ...
 									   beta, data, numPatches, patchDim, ...
-									   theta)
+									   theta, ZCAWhite)
 
 alpha = .1;
 
@@ -19,7 +19,7 @@ rows = sqrt(colLen);
 
 epsilon = 0.1;
 
-batchSize = 50;
+batchSize = 20;
 
 for i = 1:numPatches/batchSize
 	printf("starting\n");
@@ -38,7 +38,7 @@ for i = 1:numPatches/batchSize
 
 	patches = patches./(max(max(patches)));
 
-	[patches, ZCAWhite] = ZCAWhiten(patches, colLen*batchSize, epsilon);
+	patches = ZCAWhite*patches;
 
 	printf("patches2\n");
 
