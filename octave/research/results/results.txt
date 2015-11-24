@@ -248,7 +248,7 @@ No ZCA Whitening
 400 hidden units
 random initial weights over small interval
 trained in batch with lbfgs
-time: 998 seconds (car ride)
+time: 998 seconds
 sparsityParam = 0.035
 lambda = 3e-3
 beta = 5     
