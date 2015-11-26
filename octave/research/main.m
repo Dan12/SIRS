@@ -31,6 +31,8 @@ beta = 5;              % weight of sparsity penalty term
 
 epsilon = 0.1;	       % epsilon for ZCA whitening
 
+addpath color/;
+
 %testGradients();
 
 load cifar-10-batches-mat/data_batch_1.mat

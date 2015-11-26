@@ -10,7 +10,7 @@
 %n: input parameters
 %m: number of training examples
 
-function [cost, grad] = SpAeCostGrad(theta, visibleSize, hiddenSize, ...
+function [cost, grad] = SpAeXECostGrad(theta, visibleSize, hiddenSize, ...
                                      lambda, sparsityParam, beta, data)
 
     %reshape theta vecotor into weight vectors
@@ -35,8 +35,8 @@ function [cost, grad] = SpAeCostGrad(theta, visibleSize, hiddenSize, ...
     a3 = sigmoid(z3);
     
     %cost
-    %squared error cost
-    cost = sum(sum((a3-data).^2,2),1)./(2*m);
+    %cross entropy cost
+    cost = sum(sum(data.*log(a3)+(1-data).*log(1-a3),2),1)./(m);
     
     %regularization
     cost = cost+(lambda/2)*(sum((W1.^2)(:))+sum((W2.^2)(:)));
@@ -50,7 +50,7 @@ function [cost, grad] = SpAeCostGrad(theta, visibleSize, hiddenSize, ...
     sparstity_delta = -sparsityParam./phat+(1-sparsityParam)./(1-phat);
     
     %error of outputs
-    delta3 = -(data-a3).*psigm(a3);
+    delta3 = a3-data;
     
     %error of hidden layer
     delta2 = (W2'*delta3+beta*sparstity_delta*ones(1,size(z2,2))).*psigmoid(a2);

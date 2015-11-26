@@ -4,18 +4,18 @@ function testGradients()
     testSparityParam = 0.035;
     testBeta = 5;
 
-    debugHiddenSize = 5;
-    debugvisibleSize = 8;
+    debugHiddenSize = 10;
+    debugvisibleSize = 20;
     debugM = 10;
     patches = rand(debugvisibleSize, debugM);
     theta = initializeParameters(debugHiddenSize, debugvisibleSize);
     
-    [cost, grad] = SpLinAeCostGrad(theta, debugvisibleSize, debugHiddenSize, ...
+    [cost, grad] = SpAeXECostGrad(theta, debugvisibleSize, debugHiddenSize, ...
                                                testLambda, testSparityParam, testBeta, ...
                                                patches);
    
     %compute numerical gradients, reference cost/gradient function
-    numGrad = computeNumericalGradient( @(x) SpLinAeCostGrad(x, debugvisibleSize, debugHiddenSize, ...
+    numGrad = computeNumericalGradient( @(x) SpAeXECostGrad(x, debugvisibleSize, debugHiddenSize, ...
                                                   testLambda, testSparityParam, testBeta, ...
                                                   patches), theta);
                                                   
