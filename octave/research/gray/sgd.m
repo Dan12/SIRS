@@ -1,7 +1,7 @@
 function [theta, J_history] = sgd(theta, alpha, num_iters, ...
                                               visibleSize, hiddenSize, ...
                                               lambda, sparsityParam, ...
-                                              beta, data, batchsize)
+                                              beta, data, batchsize, dispPeriod)
 
 	%Stochastic Gradient Descent Performs gradient descent to learn theta
     %   theta = GRADIENTDESENT(theta, alpha, num_iters) updates theta by 
@@ -23,7 +23,9 @@ function [theta, J_history] = sgd(theta, alpha, num_iters, ...
         % Save the cost J in every iteration    
         J_history(iter) = cost;
 	
-        printf("%d %f\n", iter, cost);
+		if(mod(iter,dispPeriod) == 0)
+        	printf("%d %f\n", iter, cost);
+        endif
 
     end
 

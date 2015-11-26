@@ -242,7 +242,7 @@ iterations = 20
 batchSize = 20
 
 ---------17---------
-9000 8*8 rgb patches from cifar-10 batch 1
+9000 16*16 rgb patches from cifar-10 batch 1
 1 patch from random position from first 9000 images
 No ZCA Whitening
 400 hidden units
@@ -255,7 +255,7 @@ beta = 5
 iterations = 600
 
 ---------18---------
-6000 8*8 grayscale patches from cifar-10 batch 1
+6000 16*16 grayscale patches from cifar-10 batch 1
 patches from random position from random images in set
 No ZCA Whitening
 225 hidden units
@@ -268,7 +268,7 @@ beta = 3
 iterations = 200
 
 ---------19---------
-6000 8*8 grayscale patches from cifar-10 batch 1
+6000 16*16 grayscale patches from cifar-10 batch 1
 patches from random position from random images in set
 No ZCA Whitening
 225 hidden units
@@ -281,7 +281,7 @@ beta = 3
 iterations = 400
 
 ---------20---------
-6000 8*8 grayscale patches from cifar-10 batch 1
+6000 16*16 grayscale patches from cifar-10 batch 1
 patches from random position from random images in set
 No ZCA Whitening
 225 hidden units
@@ -294,7 +294,7 @@ beta = 3
 iterations = 800
 
 ---------21---------
-3000 8*8 grayscale patches from cifar-10 batch 1
+3000 16*16 grayscale patches from cifar-10 batch 1
 patches from random position from random images in set
 No ZCA Whitening
 225 hidden units
@@ -307,7 +307,7 @@ beta = 3
 iterations = 800
 
 ---------22---------
-1500 8*8 grayscale patches from cifar-10 batch 1
+1500 16*16 grayscale patches from cifar-10 batch 1
 patches from random position from random images in set
 No ZCA Whitening
 225 hidden units
@@ -320,7 +320,7 @@ beta = 3
 iterations = 800
 
 ---------23---------
-750 8*8 grayscale patches from cifar-10 batch 1
+750 16*16 grayscale patches from cifar-10 batch 1
 patches from random position from random images in set
 No ZCA Whitening
 225 hidden units
@@ -333,7 +333,7 @@ beta = 3
 iterations = 800
 
 ---------24---------
-375 8*8 grayscale patches from cifar-10 batch 1
+375 16*16 grayscale patches from cifar-10 batch 1
 patches from random position from random images in set
 No ZCA Whitening
 225 hidden units
@@ -346,7 +346,7 @@ beta = 3
 iterations = 800
 
 ---------25---------
-375 8*8 grayscale patches from cifar-10 batch 1
+375 16*16 grayscale patches from cifar-10 batch 1
 patches from random position from random images in set
 No ZCA Whitening
 100 hidden units
@@ -359,7 +359,7 @@ beta = 3
 iterations = 800
 
 ---------26---------
-375 8*8 grayscale patches from cifar-10 batch 1
+375 16*16 grayscale patches from cifar-10 batch 1
 patches from random position from random images in set
 No ZCA Whitening
 36 hidden units
@@ -372,7 +372,7 @@ beta = 3
 iterations = 800
 
 ---------27---------
-6000 8*8 grayscale patches from image sequence 1
+6000 16*16 grayscale patches from image sequence 1
 patches from random position from random images in set
 No ZCA Whitening
 100 hidden units
@@ -385,3 +385,138 @@ beta = 3
 iterations = 800
 
 ---------28---------
+6000 16*16 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+225 hidden units
+random initial weights over small interval
+trained in 1 batch with gradient desenct over 3 different alphas
+time: 1370 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations:
+	20, alpha = .03
+	200, alpha = .3
+	2000, alpha = 1
+
+---------29---------
+6000 16*16 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+225 hidden units
+random initial weights over small interval
+trained stochastic gradient desenct over 3 different alphas
+batch size = 100
+time: 62 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations:
+	40, alpha = .01
+	400, alpha = .1
+	4000, alpha = 1
+
+---------30---------
+6000 16*16 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+225 hidden units
+random initial weights over small interval
+trained stochastic gradient desenct over 3 different alphas
+batch size = 50
+time: 39 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations:
+	40, alpha = .01
+	400, alpha = .1
+	4000, alpha = 1
+
+---------31---------
+6000 16*16 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+225 hidden units
+random initial weights over small interval
+trained stochastic gradient desenct over 3 different alphas
+batch size = 25
+time: 33 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations:
+	40, alpha = .01
+	400, alpha = .1
+	4000, alpha = 1
+
+---------32---------
+6000 16*16 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+225 hidden units
+random initial weights over small interval
+trained stochastic gradient desenct over 3 different alphas
+batch size = 25
+time: 64 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations:
+	80, alpha = .01
+	800, alpha = .1
+	8000, alpha = 1
+
+---------33---------
+6000 16*16 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+225 hidden units
+random initial weights over small interval
+trained stochastic gradient desenct over 3 different alphas
+batch size = 25
+time: 63 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations:
+	80, alpha = .03
+	800, alpha = .3
+	8000, alpha = 3
+
+---------34---------
+6000 8*8 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+400 hidden units
+random initial weights over small interval
+trained stochastic gradient desenct over 3 different alphas
+batch size = 25
+time: 50 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations:
+	100, alpha = .009
+	1000, alpha = .09
+	10000, alpha = .9
+
+---------35---------
+6000 16*16 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+400 hidden units
+random initial weights over small interval
+trained stochastic gradient desenct over 3 different alphas
+batch size = 25
+time: 200 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations:
+	150, alpha = .008
+	1500, alpha = .08
+	15000, alpha = .8
+
+---------36---------

@@ -1,6 +1,6 @@
 function optTheta = batchLearn(visibleSize, hiddenSize, lambda, sparsityParam, beta, patches, theta)
 
-	numIters = 800;
+	numIters = 600;
 
 	options = struct;
 	options.Method = 'lbfgs'; 
@@ -12,10 +12,8 @@ function optTheta = batchLearn(visibleSize, hiddenSize, lambda, sparsityParam, b
 	pause;
 
 	%batch learning
-	[optTheta, cost] = minFunc( @(p) SpAeCostGrad(p, visibleSize, hiddenSize, lambda, sparsityParam,beta, patches), theta, options);
+	%[optTheta, cost] = minFunc( @(p) SpAeCostGrad(p, visibleSize, hiddenSize, lambda, sparsityParam,beta, patches), theta, options);
 
-	alpha = .3;
-
-	%[optTheta,cost_hist] = gradientDescent(theta, alpha, numIters, visibleSize,hiddenSize,lambda,sparsityParam,beta,patches);
-
+	%repetative stochastic gradient descent
+	optTheta = repsgd(visibleSize, hiddenSize, lambda, sparsityParam, beta, patches, theta);
 endfunction

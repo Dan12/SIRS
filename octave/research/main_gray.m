@@ -7,30 +7,30 @@ pause;
 printf("\n");
 
 %width
-imsize1 = 100;
+imsize1 = 32;
 %height
-imsize2 = 56;
+imsize2 = 32;
 
 patchDim   = 16;        % patch dimension
 numPatches = 6000;   % number of patches
 
 visibleSize = patchDim * patchDim;  % number of input units 
 outputSize  = visibleSize;   % number of output units
-hiddenSize  = 100;           % number of hidden units 
+hiddenSize  = 400;           % number of hidden units 
 
 sparsityParam = 0.01; % desired average activation of the hidden units.
 lambda = 0.0001;         % weight decay parameter       
 beta = 3;              % weight of sparsity penalty term 
 
-%load cifar-10-batches-mat/data_batch_1.mat
-%data = data';
+load cifar-10-batches-mat/data_batch_1.mat
+data = data';
 
 addpath gray/;
 
 % Use minFunc to minimize the function
 addpath minFunc/
 
-load imageprocess/imdata.mat;
+%load imageprocess/imdata.mat;
 
 %	disp(size(data));
 %	figure 1;
