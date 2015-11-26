@@ -255,3 +255,133 @@ beta = 5
 iterations = 600
 
 ---------18---------
+6000 8*8 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+225 hidden units
+random initial weights over small interval
+trained in 1 batch with lbfgs
+time: 179 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations = 200
+
+---------19---------
+6000 8*8 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+225 hidden units
+random initial weights over small interval
+trained in 1 batch with lbfgs
+time: 367 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations = 400
+
+---------20---------
+6000 8*8 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+225 hidden units
+random initial weights over small interval
+trained in 1 batch with lbfgs
+time: 751 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations = 800
+
+---------21---------
+3000 8*8 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+225 hidden units
+random initial weights over small interval
+trained in 1 batch with lbfgs
+time: 520 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations = 800
+
+---------22---------
+1500 8*8 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+225 hidden units
+random initial weights over small interval
+trained in 1 batch with lbfgs
+time: 430 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations = 800
+
+---------23---------
+750 8*8 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+225 hidden units
+random initial weights over small interval
+trained in 1 batch with lbfgs
+time: 379 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations = 800
+
+---------24---------
+375 8*8 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+225 hidden units
+random initial weights over small interval
+trained in 1 batch with lbfgs
+time: 297 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations = 800
+
+---------25---------
+375 8*8 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+100 hidden units
+random initial weights over small interval
+trained in 1 batch with lbfgs
+time: 154 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations = 800
+
+---------26---------
+375 8*8 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+36 hidden units
+random initial weights over small interval
+trained in 1 batch with lbfgs
+time: 61 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations = 800
+
+---------27---------
+6000 8*8 grayscale patches from image sequence 1
+patches from random position from random images in set
+No ZCA Whitening
+100 hidden units
+random initial weights over small interval
+trained in 1 batch with lbfgs
+time: 422 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+iterations = 800
+
+---------28---------

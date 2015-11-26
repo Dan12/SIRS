@@ -12,10 +12,10 @@ function optTheta = batchLearn(visibleSize, hiddenSize, lambda, sparsityParam, b
 	pause;
 
 	%batch learning
-	%[optTheta, cost] = minFunc( @(p) SpAeCostGrad(p, visibleSize, hiddenSize, lambda, sparsityParam,beta, patches), theta, options);
+	[optTheta, cost] = minFunc( @(p) SpAeCostGrad(p, visibleSize, hiddenSize, lambda, sparsityParam,beta, patches), theta, options);
 
 	alpha = .3;
 
-	[optTheta,cost_hist] = gradientDescent(theta, alpha, numIters, visibleSize,hiddenSize,lambda,sparsityParam,beta,patches);
+	%[optTheta,cost_hist] = gradientDescent(theta, alpha, numIters, visibleSize,hiddenSize,lambda,sparsityParam,beta,patches);
 
 endfunction

@@ -1,5 +1,5 @@
-function grayimg = toGrayScale(data, imsize)
-	newImSize = imsize*imsize;
+function grayimg = toGrayScale(data, imsize1, imsize2)
+	newImSize = imsize1*imsize2;
 	a = cast(data(1:newImSize,:),"double");
 	b = cast(data(1+newImSize:newImSize*2,:),"double");
 	c = cast(data(1+newImSize*2:end,:),"double");

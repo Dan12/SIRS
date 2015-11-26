@@ -31,5 +31,5 @@ function testGradients()
     printf("Press enter to view ideal image for theta");
     pause;
     
-    disp(calcOptImage(reshape(theta(1:debugHiddenSize*debugvisibleSize),debugHiddenSize,debugvisibleSize)));
+    %disp(calcOptImage(reshape(theta(1:debugHiddenSize*debugvisibleSize),debugHiddenSize,debugvisibleSize)));
 endfunction

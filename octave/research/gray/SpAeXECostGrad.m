@@ -36,7 +36,7 @@ function [cost, grad] = SpAeXECostGrad(theta, visibleSize, hiddenSize, ...
     
     %cost
     %cross entropy cost
-    cost = sum(sum(data.*log(a3)+(1-data).*log(1-a3),2),1)./(m);
+    cost = -sum(sum(data.*log(a3)+(1-data).*log(1-a3),2),1)./(m);
     
     %regularization
     cost = cost+(lambda/2)*(sum((W1.^2)(:))+sum((W2.^2)(:)));
@@ -53,7 +53,7 @@ function [cost, grad] = SpAeXECostGrad(theta, visibleSize, hiddenSize, ...
     delta3 = a3-data;
     
     %error of hidden layer
-    delta2 = (W2'*delta3+beta*sparstity_delta*ones(1,size(z2,2))).*psigmoid(a2);
+    delta2 = ((W2'*delta3)+beta*sparstity_delta*ones(1,size(z2,2))).*psigmoid(a2);
     
     %gradient of W1
     W1grad = (delta2*data')./m + lambda*W1;
