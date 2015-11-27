@@ -1,4 +1,4 @@
-function displayNetwork(A)
+function displayNetwork(A,h)
 	
 	% display receptive field(s) or basis vector(s) for image patches
 	%
@@ -40,7 +40,7 @@ function displayNetwork(A)
 	I = I + 1;
 	I = I / 2;
 	colormap(gray);
-	imagesc(I); 
+	set(h,'cdata',I);
 	axis equal
 	axis off
 

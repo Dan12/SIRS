@@ -520,3 +520,32 @@ iterations:
 	15000, alpha = .8
 
 ---------36---------
+6000 16*16 grayscale patches from image sequence 1
+patches from random position from random images in set
+No ZCA Whitening
+400 hidden units
+random initial weights over small interval
+trained stochastic gradient desenct
+batch size = 25
+time: 97 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3     
+alpha = 0.6
+iterations = 8000
+
+---------37---------
+3000 16*16 grayscale patches from image sequence 1
+patches from random position from random images in set
+No ZCA Whitening
+400 hidden units
+random initial weights over small interval
+trained with lbfgs using cross entropy cost function
+batch size = 25
+time: 1144 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3
+iterations = 800
+
+---------38---------

@@ -1,7 +1,7 @@
 function [theta, J_history] = sgd(theta, alpha, num_iters, ...
                                               visibleSize, hiddenSize, ...
                                               lambda, sparsityParam, ...
-                                              beta, data, batchsize, dispPeriod)
+                                              beta, data, batchsize, dispPeriod, draw, h)
 
 	%Stochastic Gradient Descent Performs gradient descent to learn theta
     %   theta = GRADIENTDESENT(theta, alpha, num_iters) updates theta by 
@@ -25,6 +25,12 @@ function [theta, J_history] = sgd(theta, alpha, num_iters, ...
 	
 		if(mod(iter,dispPeriod) == 0)
         	printf("%d %f\n", iter, cost);
+        	if(draw == 1)
+	        	W = reshape(theta(1:visibleSize * hiddenSize), hiddenSize, visibleSize);
+	        	displayNetwork(W',h);
+	        	drawnow;
+	        	fflush(stdout);
+        	endif
         endif
 
     end
