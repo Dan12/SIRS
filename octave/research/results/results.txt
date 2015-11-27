@@ -540,7 +540,7 @@ patches from random position from random images in set
 No ZCA Whitening
 400 hidden units
 random initial weights over small interval
-trained with lbfgs using cross entropy cost function
+trained with lbfgs
 batch size = 25
 time: 1144 seconds
 sparsityParam = 0.01
@@ -549,3 +549,17 @@ beta = 3
 iterations = 800
 
 ---------38---------
+3000 16*16 grayscale patches from image sequence 1
+patches from random position from random images in set
+No ZCA Whitening
+400 hidden units
+random initial weights over small interval
+trained with lbfgs using cross entropy cost function (I think)
+batch size = 25
+time: 922 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3
+iterations = 800
+
+---------39---------
