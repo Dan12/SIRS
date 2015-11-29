@@ -1,6 +1,7 @@
 function patches = normalizeData(patches)
 
-	patches = (patches./128)-1;
+	% Scale [-1,1]
+	patches = (patches./(max(max(patches))/2))-1;
 
 	%disp(patches);
 

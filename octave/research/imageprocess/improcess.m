@@ -2,10 +2,11 @@
 
 %100*56 image files
 function improcess()
-	imgdir = "/Users/Danweb/Desktop/Machine Learning/videoSequen/";
+	imgdir = "/Users/Danweb/Desktop/Machine Learning/videoSequences/videoSequen2/";
 	imgprefix = "sequ-";
 
-	numImgs = 2187;
+	%1-2187, 2-4824
+	numImgs = 4824;
 	temp = imread([imgdir imgprefix "0001.png"]);
 	disp(size(temp));
 	data = zeros(size(temp,1)*size(temp,2)*size(temp,3),numImgs);
@@ -28,7 +29,7 @@ function improcess()
 
 	data = cast(data,"uint8");
 
-	save imdata.mat data -binary;
+	save imdata2.mat data -binary;
 
 endfunction
 

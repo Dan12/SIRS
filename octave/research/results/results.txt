@@ -535,13 +535,12 @@ alpha = 0.6
 iterations = 8000
 
 ---------37---------
-3000 16*16 grayscale patches from image sequence 1
+3000 16*16 grayscale patches from cifar-10 batch 1
 patches from random position from random images in set
 No ZCA Whitening
 400 hidden units
 random initial weights over small interval
 trained with lbfgs
-batch size = 25
 time: 1144 seconds
 sparsityParam = 0.01
 lambda = 0.0001
@@ -549,13 +548,12 @@ beta = 3
 iterations = 800
 
 ---------38---------
-3000 16*16 grayscale patches from image sequence 1
+3000 16*16 grayscale patches from cifar-10 batch 1
 patches from random position from random images in set
 No ZCA Whitening
 400 hidden units
 random initial weights over small interval
 trained with lbfgs using cross entropy cost function (I think)
-batch size = 25
 time: 922 seconds
 sparsityParam = 0.01
 lambda = 0.0001
@@ -563,3 +561,20 @@ beta = 3
 iterations = 800
 
 ---------39---------
+20000 16*16 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+400 hidden units
+random initial weights over small interval
+trained with stochastic gradient desenct over 3 different alphas
+time: 3845 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3
+batch size = 2
+iterations:
+	5000, alpha = .005
+	50000, alpha = .05
+	500000, alpha = .5
+
+---------40---------

@@ -7,7 +7,7 @@ pause;
 printf("\n");
 
 patchDim   = 16;        % patch dimension
-numPatches = 3000;   % number of patches
+numPatches = 20000;   % number of patches
 
 visibleSize = patchDim * patchDim;  % number of input units 
 outputSize  = visibleSize;   % number of output units
@@ -20,11 +20,11 @@ beta = 3;              % weight of sparsity penalty term
 load cifar-10-batches-mat/data_batch_1.mat
 data = data';
 
-%load imageprocess/imdata.mat;
+%load imageprocess/imdata2.mat;
 
-%width
+%width (100 ; 32)
 imsize1 = 32;
-%height
+%height (56 ; 32)
 imsize2 = 32;
 
 addpath gray/;
@@ -34,11 +34,7 @@ addpath minFunc/
 
 %	disp(size(data));
 %	figure 1;
-	h = dispcf(1,data,imsize1,imsize2); 
-	%set image handler
-	get(h);
-	set(gcf,'doublebuffer','on'); 
-	set(h,'erasemode','xor');
+%	dispcf(1,data,imsize1,imsize2);
 	%grayscale data
 	data = toGrayScale(data,imsize1,imsize2);
 %	figure 2;
@@ -52,7 +48,16 @@ theta = initializeParameters(hiddenSize, visibleSize);
 
 patches = selectPatches(data, patchDim, numPatches, imsize1, imsize2);
 
+dispgi(1,patches,patchDim,patchDim);
+
 t1 = getMillis();
+
+h = imagesc(rand(patchDim,patchDim)); 
+%set image handler
+%get(h);
+%set(gcf,'doublebuffer','on'); 
+%set(h,'erasemode','xor');
+axis square;
 
 optTheta = batchLearn(visibleSize, hiddenSize, lambda, sparsityParam, beta, patches, theta, h);
 
