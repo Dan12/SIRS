@@ -7,15 +7,15 @@ pause;
 printf("\n");
 
 patchDim   = 16;        % patch dimension
-numPatches = 20000;   % number of patches
+numPatches = 10000;   % number of patches
 
 visibleSize = patchDim * patchDim;  % number of input units 
 outputSize  = visibleSize;   % number of output units
-hiddenSize  = 400;           % number of hidden units 
+hiddenSize  = 225;           % number of hidden units 
 
-sparsityParam = 0.01; % desired average activation of the hidden units.
-lambda = 0.0001;         % weight decay parameter       
-beta = 3;              % weight of sparsity penalty term 
+sparsityParam = 0.005; % desired average activation of the hidden units.
+lambda = .0001;         % weight decay parameter       
+beta = 5;              % weight of sparsity penalty term 
 
 load cifar-10-batches-mat/data_batch_1.mat
 data = data';
@@ -44,7 +44,7 @@ addpath minFunc/
 
 %testGradients();
 
-theta = initializeParameters(hiddenSize, visibleSize);
+theta = initializeParameters([visibleSize,hiddenSize,visibleSize]);
 
 patches = selectPatches(data, patchDim, numPatches, imsize1, imsize2);
 

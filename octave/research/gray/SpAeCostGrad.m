@@ -29,10 +29,12 @@ function [cost, grad] = SpAeCostGrad(theta, visibleSize, hiddenSize, ...
     %calculate activation vector of hidden layer (l2)
     z2 = W1*data+repmat(b1,1,m);
     a2 = sigmoid(z2);
+    a2 = constrA(a2);
     
     %calculate activation vector of output layer (l3)
     z3 = W2*a2+repmat(b2,1,m);
     a3 = sigmoid(z3);
+    a3 = constrA(a3);
     
     %cost
     %squared error cost
@@ -80,4 +82,8 @@ endfunction
 %inverse sigmoid function for z vecotor, inputs should be activation vecotor
 function psigm = psigmoid(x)
     psigm = x.*(1-x);
+endfunction
+
+function a = constrA(x)
+    a = max(x,1e-305);
 endfunction

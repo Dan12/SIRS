@@ -28,9 +28,22 @@ function [theta, J_history] = sgdALR(theta, alpha, num_iters, ...
 
         theta = theta-alphaG.*grad;
 
+       	if(isnan(mean(mean(grad))))
+       		disp(cost);
+        	disp(mean(mean(alphaG)));
+        	disp(max(max(alphaG)));
+        	disp(min(min(alphaG)));
+        	disp(mean(mean(grad)));
+        	disp(mean(mean(prevGrad)));
+        	disp(max(max(prevGrad)));
+        	disp(min(min(prevGrad)));
+        	break;
+    	endif
+
         gradSign = sign(prevGrad.*grad);
         gradSignPlus = gradSign;
         gradSign(gradSign < 0) = mult;
+        gradSign(gradSign == 0) = 1;
         gradSignPlus(gradSignPlus < 0) = 0;
         alphaG = alphaG + gradSignPlus*add;
         alphaG = alphaG.*gradSign;

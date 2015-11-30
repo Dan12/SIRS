@@ -1,6 +1,6 @@
 function optTheta = batchLearn(visibleSize, hiddenSize, lambda, sparsityParam, beta, patches, theta, h)
 
-	numIters = 400;
+	numIters = 600;
 
 	options = struct;
 	options.Method = 'lbfgs'; 
@@ -12,18 +12,19 @@ function optTheta = batchLearn(visibleSize, hiddenSize, lambda, sparsityParam, b
 	pause;
 
 	%batch learning
-	%[optTheta, cost] = minFunc( @(p) SpAeCostGrad(p, visibleSize, hiddenSize, lambda, sparsityParam,beta, patches), theta, options);
+	[optTheta, cost] = minFunc( @(p) SpAeCostGrad(p, visibleSize, hiddenSize, lambda, sparsityParam,beta, patches), theta, options);
 
 	%repetative stochastic gradient descent
 	%optTheta = repsgd(visibleSize, hiddenSize, lambda, sparsityParam, beta, patches, theta,h);
 
 	%regular sgd
-	alpha = .001;
-	batchSize = 5;
-	numIters = 50000;
-	%these values should converge to alpha of 0.7 with random switching
-	%		min,   max, pos-add,  neg-mult]
-	alrs = [0.0001,10,  0.3*0.05, .95];
+	alpha = .008;
+	batchSize = 500;
+	numIters = 100000;
 	%[optTheta, cost] = sgd(theta, alpha, numIters, visibleSize,hiddenSize,lambda,sparsityParam,beta,patches,batchSize,100,0,h);
-	[optTheta, cost] = sgdALR(theta, alpha, numIters, visibleSize,hiddenSize,lambda,sparsityParam,beta,patches,batchSize,1,0,h,alrs);
+	convergeAlpha = 1;
+	%these values should converge to alpha of convergeAlpha with random switching
+	%		min,    max, pos-add,            neg-mult]
+	alrs = [0.00001, 30,  convergeAlpha*0.05, 0.95];
+	%[optTheta, cost] = sgdALR(theta, alpha, numIters, visibleSize,hiddenSize,lambda,sparsityParam,beta,patches,batchSize,100,0,h,alrs);
 endfunction

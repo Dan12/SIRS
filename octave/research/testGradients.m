@@ -7,17 +7,21 @@ function testGradients()
     debugHiddenSize = 10;
     debugvisibleSize = 20;
     debugM = 10;
+    debugSizes = [debugvisibleSize,debugHiddenSize,debugHiddenSize,debugvisibleSize];
     patches = rand(debugvisibleSize, debugM);
-    theta = initializeParameters(debugHiddenSize, debugvisibleSize);
+    theta = initializeParameters(debugSizes);
+    disp(size(theta));
+
+    isSparse = [1,1,1];
     
-    [cost, grad] = SpAeXECostGrad(theta, debugvisibleSize, debugHiddenSize, ...
+    [cost, grad] = CostGradMult(theta, debugSizes, isSparse, ...
                                                testLambda, testSparityParam, testBeta, ...
-                                               patches);
+                                               patches, patches);
    
     %compute numerical gradients, reference cost/gradient function
-    numGrad = computeNumericalGradient( @(x) SpAeXECostGrad(x, debugvisibleSize, debugHiddenSize, ...
-                                                  testLambda, testSparityParam, testBeta, ...
-                                                  patches), theta);
+    numGrad = computeNumericalGradient( @(x) CostGradMult(x, debugSizes, isSparse, ...
+                                               testLambda, testSparityParam, testBeta, ...
+                                               patches, patches), theta);
                                                   
     %compare gradients
     printf("Columns of numerical Gradient and Backprop Gradient (should be similar)");
