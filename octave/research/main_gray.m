@@ -7,25 +7,25 @@ pause;
 printf("\n");
 
 patchDim   = 16;        % patch dimension
-numPatches = 10000;   % number of patches
+numPatches = 3000;   % number of patches
 
 visibleSize = patchDim * patchDim;  % number of input units 
 outputSize  = visibleSize;   % number of output units
-hiddenSize  = 225;           % number of hidden units 
+hiddenSize  = 100;           % number of hidden units 
 
 sparsityParam = 0.005; % desired average activation of the hidden units.
 lambda = .0001;         % weight decay parameter       
 beta = 5;              % weight of sparsity penalty term 
 
-load cifar-10-batches-mat/data_batch_1.mat
-data = data';
+%load cifar-10-batches-mat/data_batch_1.mat
+%data = data';
 
-%load imageprocess/imdata2.mat;
+load imageprocess/imdata2.mat;
 
 %width (100 ; 32)
-imsize1 = 32;
+imsize1 = 100;
 %height (56 ; 32)
-imsize2 = 32;
+imsize2 = 56;
 
 addpath gray/;
 

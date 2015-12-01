@@ -578,3 +578,33 @@ iterations:
 	500000, alpha = .5
 
 ---------40---------
+20000 16*16 grayscale patches from cifar-10 batch 1
+patches from random position from random images in set
+No ZCA Whitening
+400 hidden units
+random initial weights over small interval
+trained with stochastic gradient desenct over 3 different alphas
+time: 3845 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3
+batch size = 2
+iterations:
+	5000, alpha = .005
+	50000, alpha = .05
+	500000, alpha = .5
+
+---------40---------
+3000 16*16 grayscale patches from image sequence 1 rotated 90 degrees
+patches from random position from random images in set
+No ZCA Whitening
+100 hidden units
+random initial weights over small interval
+trained in 1 batch with lbfgs
+time: 212 seconds
+sparsityParam = 0.005
+lambda = 0.0001
+beta = 5     
+iterations = 600
+
+---------41---------
