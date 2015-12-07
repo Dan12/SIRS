@@ -608,3 +608,17 @@ beta = 5
 iterations = 600
 
 ---------41---------
+all images from image sequence 2 (161 seconds, 30 fps)
+121 hidden units
+12*12 patches
+random initial weights over small interval
+trained in sequential order with ALR SGD
+fLearn = 3;
+slideStep = 8;
+iterP = 5;
+alpha = 1e-3;
+convergeAlpha = 1;
+time: 114 seconds
+sparsityParam = 0.01
+lambda = 0.0001
+beta = 3

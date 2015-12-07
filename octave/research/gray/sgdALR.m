@@ -62,8 +62,8 @@ function [theta, J_history] = sgdALR(theta, alpha, num_iters, ...
 	        	W = reshape(theta(1:visibleSize * hiddenSize), hiddenSize, visibleSize);
 	        	displayNetwork(W',h);
 	        	drawnow;
-	        	fflush(stdout);
         	endif
+            fflush(stdout);
         endif
 
     end

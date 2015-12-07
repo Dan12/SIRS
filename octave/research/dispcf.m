@@ -5,6 +5,6 @@ function dispcf(i, data, imSize1, imSize2)
 	c(:,:,1) = flipud(b(:,:,1)');
 	c(:,:,2) = flipud(b(:,:,2)');
 	c(:,:,3) = flipud(b(:,:,3)');
-	imagesc(c);
+	imagesc(c,[0,255]);
 	axis square;
 endfunction

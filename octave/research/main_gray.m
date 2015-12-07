@@ -6,25 +6,25 @@ printf("Begining Execution, press enter to continue");
 pause;
 printf("\n");
 
-patchDim   = 16;        % patch dimension
-numPatches = 3000;   % number of patches
+patchDim   = 12;        % patch dimension
+numPatches = 6000;   % number of patches
 
 visibleSize = patchDim * patchDim;  % number of input units 
 outputSize  = visibleSize;   % number of output units
-hiddenSize  = 100;           % number of hidden units 
+hiddenSize  = 121;           % number of hidden units 
 
-sparsityParam = 0.005; % desired average activation of the hidden units.
-lambda = .0001;         % weight decay parameter       
-beta = 5;              % weight of sparsity penalty term 
+sparsityParam = 0.01; % desired average activation of the hidden units.
+lambda = 0.0001;         % weight decay parameter       
+beta = 3;              % weight of sparsity penalty term 
 
 %load cifar-10-batches-mat/data_batch_1.mat
 %data = data';
 
 load imageprocess/imdata2.mat;
 
-%width (100 ; 32)
+%width (100; 57 ; 32)
 imsize1 = 100;
-%height (56 ; 32)
+%height (56; 32 ; 32)
 imsize2 = 56;
 
 addpath gray/;
@@ -33,12 +33,13 @@ addpath gray/;
 addpath minFunc/
 
 %	disp(size(data));
-%	figure 1;
-%	dispcf(1,data,imsize1,imsize2);
+	imnum = ceil(rand(1)*size(data,2));
+	figure 1;
+	dispcf(imnum,data,imsize1,imsize2);
 	%grayscale data
 	data = toGrayScale(data,imsize1,imsize2);
-%	figure 2;
-%	dispgi(1,data,imsize1,imsize2);
+	figure 2;
+	dispgi(imnum,data,imsize1,imsize2);
 %	disp(size(data));
 %	pause;
 
@@ -48,7 +49,10 @@ theta = initializeParameters([visibleSize,hiddenSize,visibleSize]);
 
 patches = selectPatches(data, patchDim, numPatches, imsize1, imsize2);
 
-dispgi(1,patches,patchDim,patchDim);
+%dispgi(1,patches,patchDim,patchDim);
+
+printf("View Images\n");
+pause;
 
 t1 = getMillis();
 
@@ -59,7 +63,22 @@ h = imagesc(rand(patchDim,patchDim));
 %set(h,'erasemode','xor');
 axis square;
 
-optTheta = batchLearn(visibleSize, hiddenSize, lambda, sparsityParam, beta, patches, theta, h);
+%displayNetwork(patches,h);
+
+%optTheta = batchLearn(visibleSize, hiddenSize, lambda, sparsityParam, beta, patches, theta, h);
+
+alpha = 1e-3;
+convergeAlpha = 1;
+%these values should converge to alpha of convergeAlpha with random switching
+%		min,    max, pos-add,            neg-mult]
+alrs = [0.00001, 30,  convergeAlpha*0.05, 0.95];
+
+%how many images to train on at once and slider step size in pixels
+fLearn = 3;
+slideStep = 8;
+%iterations per patchsample
+iterP = 5;
+optTheta = sequSGD(theta, alpha, visibleSize, hiddenSize, lambda, sparsityParam, beta, data, 100, 1, h, alrs, fLearn, slideStep, imsize1, imsize2, patchDim, iterP);
 
 printf("Time: %f seconds\n", (getMillis()-t1));
 

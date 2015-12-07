@@ -1,13 +1,15 @@
 %Process Images
 
-%100*56 image files
+%ffmpeg command: ffmpeg -i file_location -vf scale=-1:32,fps=2 -sws_flags 'lanczos' folder_output/sequ-%05d.png
+
+%output image files
 function improcess()
-	imgdir = "/Users/Danweb/Desktop/Machine Learning/videoSequences/videoSequen2/";
+	imgdir = "/Users/Danweb/Desktop/Machine Learning/videoSequences/videoSequen4/";
 	imgprefix = "sequ-";
 
-	%1-2187, 2-4824
-	numImgs = 4824;
-	temp = imread([imgdir imgprefix "0001.png"]);
+	%1-2187 (100x56), 2-482 (100x56), 3-10414 (57x32), 4-14312 (57x32)
+	numImgs = 14312;
+	temp = imread([imgdir imgprefix "00001.png"]);
 	disp(size(temp));
 	data = zeros(size(temp,1)*size(temp,2)*size(temp,3),numImgs);
 
@@ -29,19 +31,21 @@ function improcess()
 
 	data = cast(data,"uint8");
 
-	save imdata2.mat data -binary;
+	save imdata4.mat data -binary;
 
 endfunction
 
 function [n] = getNumbering(i)
 	n = i;
-	if (i/1000 >= 1)
+	if (i/10000 >= 1)
 		n = mat2str(i);
-	elseif (i/100 >= 1)
+	elseif (i/1000 >= 1)
 		n = ["0" mat2str(i)];
+	elseif (i/100 >= 1)
+		n = ["00" mat2str(i)];
 	elseif (i/10 >= 1)
-		n = ["00" mat2str(i)];	
+		n = ["000" mat2str(i)];	
 	else
-		n = ["000" mat2str(i)];
+		n = ["0000" mat2str(i)];
 	endif
 endfunction
