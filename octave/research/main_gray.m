@@ -7,7 +7,7 @@ pause;
 printf("\n");
 
 patchDim   = 12;        % patch dimension
-numPatches = 6000;   % number of patches
+numPatches = 9000;   % number of patches
 
 visibleSize = patchDim * patchDim;  % number of input units 
 outputSize  = visibleSize;   % number of output units
@@ -65,7 +65,7 @@ axis square;
 
 %displayNetwork(patches,h);
 
-%optTheta = batchLearn(visibleSize, hiddenSize, lambda, sparsityParam, beta, patches, theta, h);
+optTheta = batchLearn(visibleSize, hiddenSize, lambda, sparsityParam, beta, patches, theta, h);
 
 alpha = 1e-3;
 convergeAlpha = 1;
@@ -78,7 +78,7 @@ fLearn = 3;
 slideStep = 8;
 %iterations per patchsample
 iterP = 5;
-optTheta = sequSGD(theta, alpha, visibleSize, hiddenSize, lambda, sparsityParam, beta, data, 100, 1, h, alrs, fLearn, slideStep, imsize1, imsize2, patchDim, iterP);
+%optTheta = sequSGD(theta, alpha, visibleSize, hiddenSize, lambda, sparsityParam, beta, data, 100, 1, h, alrs, fLearn, slideStep, imsize1, imsize2, patchDim, iterP);
 
 printf("Time: %f seconds\n", (getMillis()-t1));
 

@@ -1,4 +1,4 @@
-function [x,f,exitflag,output] = minFunc(funObj,x0,options,varargin)
+function [x,f,exitflag,output] = minFunc(funObj,x0,options,h,visibleSize,hiddenSize,varargin)
 % minFunc(funObj,x0,options,varargin)
 %
 % Unconstrained optimizer using a line search strategy
@@ -1070,6 +1070,10 @@ for i = 1:maxIter
     % Output iteration information
     if verboseI
         fprintf('%10d %10d %15.5e %15.5e %15.5e\n',i,funEvals*funEvalMultiplier,t,f,sum(abs(g)));
+        W = reshape(x(1:visibleSize * hiddenSize), hiddenSize, visibleSize);
+        displayNetwork(W',h);
+        drawnow;
+        fflush(stdout);
     end
 
     if logfile

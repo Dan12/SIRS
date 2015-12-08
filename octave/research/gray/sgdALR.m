@@ -18,6 +18,9 @@ function [theta, J_history] = sgdALR(theta, alpha, num_iters, ...
     maxG = alrs(2);
     add = alrs(3);
     mult = alrs(4);
+    if(size(alrs) == 5)
+        convDecay = alrs(5);
+    end
 
    	for iter = 1:num_iters
 
@@ -58,6 +61,11 @@ function [theta, J_history] = sgdALR(theta, alpha, num_iters, ...
 	
 		if(mod(iter,dispPeriod) == 0)
         	printf("%d %f\n", iter, cost);
+            disp(max(max(alphaG)));
+            disp(min(min(alphaG)));
+            disp(max(max(abs(grad))));
+            disp(min(min(abs(grad))));
+            disp(add/0.05);
         	if(draw == 1)
 	        	W = reshape(theta(1:visibleSize * hiddenSize), hiddenSize, visibleSize);
 	        	displayNetwork(W',h);
@@ -65,6 +73,10 @@ function [theta, J_history] = sgdALR(theta, alpha, num_iters, ...
         	endif
             fflush(stdout);
         endif
+
+        if exist("convDecay","var")
+            add = add-convDecay;
+        end
 
     end
 
