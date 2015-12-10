@@ -22,11 +22,12 @@ function [theta] = sequSGD(theta, alpha, ...
 
     num_iters = floor(size(data,2)/fLearn)-1;
 
-    %disp(size(data));
-    %disp(rIterns);
-    %disp(cIterns);
-    %disp(rStart);
-    %disp(cStart);
+    disp(size(data));
+    disp(rIterns);
+    disp(cIterns);
+    disp(rStart);
+    disp(cStart);
+    disp(fLearn*rIterns*cIterns);
 
   	J_history = zeros(num_iters, 1);
 
