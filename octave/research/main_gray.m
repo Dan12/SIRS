@@ -11,7 +11,7 @@ numPatches = 10000;   % number of patches
 
 visibleSize = patchDim * patchDim;  % number of input units 
 outputSize  = visibleSize;   % number of output units
-hiddenSize  = 121;           % number of hidden units 
+hiddenSize  = 25;           % number of hidden units 
 
 sparsityParam = 0.01; % desired average activation of the hidden units.
 lambda = 0.0001;         % weight decay parameter       
