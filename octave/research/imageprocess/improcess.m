@@ -4,11 +4,11 @@
 
 %output image files
 function improcess()
-	imgdir = "/Users/Danweb/Desktop/Machine Learning/videoSequences/videoSequen4/";
+	imgdir = "/Users/Danweb/Desktop/Machine Learning/videoSequences/videoSequen5/";
 	imgprefix = "sequ-";
 
-	%1-2187 (100x56), 2-482 (100x56), 3-10414 (57x32), 4-14312 (57x32)
-	numImgs = 14312;
+	%1-2187 (100x56), 2-482 (100x56), 3-10414 (57x32), 4-14312 (57x32), 5-8073 (57x32)
+	numImgs = 8073;
 	temp = imread([imgdir imgprefix "00001.png"]);
 	disp(size(temp));
 	data = zeros(size(temp,1)*size(temp,2)*size(temp,3),numImgs);
@@ -31,7 +31,7 @@ function improcess()
 
 	data = cast(data,"uint8");
 
-	save imdata4.mat data -binary;
+	save imdata5.mat data -binary;
 
 endfunction
 

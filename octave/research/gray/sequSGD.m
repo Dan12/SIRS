@@ -33,6 +33,7 @@ function [theta] = sequSGD(theta, alpha, ...
 
    	for iter = 1:num_iters
 
+   		%select patches
    		patches = zeros(patchDim*patchDim,fLearn*rIterns*cIterns);
 
     	for pNum = 1:fLearn
@@ -40,7 +41,7 @@ function [theta] = sequSGD(theta, alpha, ...
     		for r = 1:rIterns
     			for c = 1:cIterns
     				%disp((pNum-1)*cIterns*rIterns + (r-1)*cIterns + c);
-    				patches(:,(pNum-1)*cIterns*rIterns + (r-1)*cIterns + c) = img(rStart+(r-1)*slideStep:rStart+(r-1)*slideStep-1+patchDim,cStart+(c-1)*slideStep:cStart+(c-1)*slideStep-1+patchDim)(:);
+    				patches(:,(pNum-1)*cIterns*rIterns + (r-1)*cIterns + c) = fliplr(rot90(img(rStart+(r-1)*slideStep:rStart+(r-1)*slideStep-1+patchDim,cStart+(c-1)*slideStep:cStart+(c-1)*slideStep-1+patchDim)))(:);
 				end
 			end
 		end
@@ -56,6 +57,7 @@ function [theta] = sequSGD(theta, alpha, ...
 	        [cost, grad] = SpAeCostGrad(theta, visibleSize, hiddenSize, ...
 	                                     lambda, sparsityParam, beta, patches);
 
+	    	%if something goes wrong
 	       	if(isnan(mean(mean(grad))))
 	       		printf("Grad is NaN");
 	       		disp(mean(mean(theta)));
@@ -83,12 +85,19 @@ function [theta] = sequSGD(theta, alpha, ...
 	        % Save the cost J in every iteration    
 	        J_history(iter) = cost;
 		
-			if(mod(iter,dispPeriod) == 0)
+			if(mod(iter,dispPeriod) == 0 && i == iterP)
 	        	printf("%d %d %f\n", iter, i, cost);
 	        	if(draw == 1)
 		        	W = reshape(theta(1:visibleSize * hiddenSize), hiddenSize, visibleSize);
+		        	%figure 1;
+		        	%displayNetwork(patches);
+		        	%figure 2;
 		        	displayNetwork(W',h);
 		        	drawnow;
+		        	%printf("Stop");
+		            imageOutName = ["media/tempImgs/img-" mat2str(iter/dispPeriod) ".png"];
+		            print(imageOutName,"-dpng");
+		            %pause;
 	        	endif
 	            fflush(stdout);
 	        endif

@@ -1074,6 +1074,12 @@ for i = 1:maxIter
         displayNetwork(W',h);
         drawnow;
         fflush(stdout);
+        if false
+            %printf("Stop");
+            imageOutName = ["tempImgs/img-" mat2str(i) ".png"];
+            print(imageOutName,"-djpeg");
+            %pause;
+        end
     end
 
     if logfile

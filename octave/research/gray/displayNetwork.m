@@ -40,7 +40,11 @@ function displayNetwork(A,h)
 	I = I + 1;
 	I = I / 2;
 	colormap(gray);
-	set(h,'cdata',I);
+	if exist("h","var")
+		set(h,'cdata',I);
+	else
+		imagesc(I);
+	end
 	axis equal
 	axis off
 

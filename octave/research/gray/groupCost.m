@@ -47,14 +47,21 @@ function [cost, grad] = groupCost(theta, visibleSize, hiddenSize, ...
     phat = sum(a2,2)./m;
     cost = cost+beta*sum(sparsityParam*log(sparsityParam./phat)+(1-sparsityParam)*log((1-sparsityParam)./(1-phat)),1);
     
-    grLambda = 5e-5;
+    %grLambda = 5e-6;
+    grLambda = 0;
     %grouping
     %disp(W1);
-    groupError = groupMatrix*W1; 
+    groupError = zeros(size(W1,1),size(W1,2),size(groupMatrix,3));
+    %disp(size(groupError));
+    for i = 1:size(groupMatrix,3)
+        groupError(:,:,i) = groupMatrix(:,:,i)*W1;
+    end
+    %disp(groupError);
+
     %disp(groupError); 
-    cost = cost+(grLambda/2)*sum(groupError.^2(:));
+    cost = cost+(grLambda/2)*sum((groupError.^2)(:));
     %grouping gradient
-    groupGrad = grLambda*groupError;
+    groupGrad = 2*grLambda*sum(groupError,3);
 
     %gradients
     %sparsity partial derivative
@@ -67,7 +74,7 @@ function [cost, grad] = groupCost(theta, visibleSize, hiddenSize, ...
     delta2 = (W2'*delta3+beta*sparstity_delta*ones(1,size(z2,2))).*psigmoid(a2);
     
     %gradient of W1
-    W1grad = (delta2*data')./m + lambda*W1;
+    W1grad = (delta2*data')./m + lambda*W1+groupGrad;
     
     %gradient of b1
     b1grad = sum(delta2,2)./m;

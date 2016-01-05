@@ -10,13 +10,13 @@ function optTheta = groupLearn(visibleSize, hiddenSize, lambda, sparsityParam, b
 	for row = 1:donutDim
 	    for col = 1:donutDim
 	        groupMatrix(groupNum, 1, 2, 1) = -1;
-		groupMatrix(groupNum, 1, 3, 2) = -1;
-		groupMatrix(groupNum, 2, 1, 3) = -1;
-		groupMatrix(groupNum, 2, 2, 4) = -1;
-		groupMatrix(groupNum, 2, 3, 5) = -1;
-		groupMatrix(groupNum, 3, 1, 6) = -1;
-		groupMatrix(groupNum, 3, 2, 7) = -1;
-		groupMatrix(groupNum, 3, 3, 8) = -1;
+			groupMatrix(groupNum, 1, 3, 2) = -1;
+			groupMatrix(groupNum, 2, 1, 3) = -1;
+			groupMatrix(groupNum, 2, 2, 4) = -1;
+			groupMatrix(groupNum, 2, 3, 5) = -1;
+			groupMatrix(groupNum, 3, 1, 6) = -1;
+			groupMatrix(groupNum, 3, 2, 7) = -1;
+			groupMatrix(groupNum, 3, 3, 8) = -1;
 		
 	    	groupMatrix(groupNum, 1, 1, :) = ones(1,poolDimSqrd);
 	        groupNum = groupNum + 1;
@@ -31,11 +31,11 @@ function optTheta = groupLearn(visibleSize, hiddenSize, lambda, sparsityParam, b
 
 	%groupMatrix = eye(hiddenSize);
 
-	disp(groupMatrix);
+	%disp(groupMatrix);
 	%disp(sum(groupMatrix,1));
 	%disp(sum(groupMatrix,2));
 
-	numIters = 600;
+	numIters = 1000;
 
 	options = struct;
 	options.Method = 'lbfgs'; 
@@ -48,8 +48,8 @@ function optTheta = groupLearn(visibleSize, hiddenSize, lambda, sparsityParam, b
 
 	optTheta = theta;
 
-	%groupCost(theta, visibleSize, hiddenSize, lambda, sparsityParam,beta, patches, groupMatrix)
+	%groupCost(theta, visibleSize, hiddenSize, lambda, sparsityParam,beta, patches, groupMatrix);
 
 	%batch learning
-	%[optTheta, cost] = minFunc( @(p) groupCost(p, visibleSize, hiddenSize, lambda, sparsityParam,beta, patches, groupMatrix), theta, options, h, visibleSize, hiddenSize);
+	[optTheta, cost] = minFunc( @(p) groupCost(p, visibleSize, hiddenSize, lambda, sparsityParam,beta, patches, groupMatrix), theta, options, h, visibleSize, hiddenSize);
 endfunction

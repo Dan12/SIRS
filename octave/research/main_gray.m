@@ -7,23 +7,23 @@ pause;
 printf("\n");
 
 patchDim   = 12;        % patch dimension
-numPatches = 10000;   % number of patches
+numPatches = 6000;   % number of patches
 
 visibleSize = patchDim * patchDim;  % number of input units 
 outputSize  = visibleSize;   % number of output units
-hiddenSize  = 25;           % number of hidden units 
+hiddenSize  = 121;           % number of hidden units 
 
 sparsityParam = 0.01; % desired average activation of the hidden units.
 lambda = 0.0001;         % weight decay parameter       
 beta = 3;              % weight of sparsity penalty term 
 
-load cifar-10-batches-mat/data_batch_1.mat
-data = data';
+%load cifar-10-batches-mat/data_batch_1.mat
+%data = data';
 
-%load imageprocess/imdata2.mat;
+load imageprocess/imdata5.mat;
 
 %width (100; 57 ; 32)
-imsize1 = 32;
+imsize1 = 57;
 %height (56; 32 ; 32)
 imsize2 = 32;
 
@@ -78,9 +78,9 @@ fLearn = 3;
 slideStep = 4;
 %iterations per patchsample
 iterP = 20;
-%optTheta = sequSGD(theta, alpha, visibleSize, hiddenSize, lambda, sparsityParam, beta, data, 100, 1, h, alrs, fLearn, slideStep, imsize1, imsize2, patchDim, iterP);
+optTheta = sequSGD(theta, alpha, visibleSize, hiddenSize, lambda, sparsityParam, beta, data, 1, 1, h, alrs, fLearn, slideStep, imsize1, imsize2, patchDim, iterP);
 
-optTheta = groupLearn(visibleSize, hiddenSize, lambda, sparsityParam, beta, patches, theta, h);
+%optTheta = groupLearn(visibleSize, hiddenSize, lambda, sparsityParam, beta, patches, theta, h);
 
 printf("Time: %f seconds\n", (getMillis()-t1));
 
